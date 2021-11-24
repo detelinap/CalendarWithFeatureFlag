@@ -3,10 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import * as configcat from "configcat-js";
+
+let logger = configcat.createConsoleLogger(3); // Setting log level to 3 (Info)
+
+let configCatClient = configcat.createClient("W6_ZCCKiu0OEHmjAj20Klg/IlLo3lAr20-OmT8oQaw4XQ", { // <-- This is the actual SDK Key for your Production environment
+  logger: logger
+});
+
+var userObject = {
+  identifier: "Detelina"
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App client={configCatClient}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
